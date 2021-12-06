@@ -1,0 +1,79 @@
+.container{
+  margin: 60px 0px 60px;
+  a{
+    color: $primaryColor;
+  }
+  .contenido-perfil{
+    //Información perfil
+    text-align: justify;
+    figure{
+      display: block;
+      text-align: center;
+    }
+    img{
+      height: 200px;
+
+    }
+  }
+}
+
+//====  Bienvenida ===
+.mensajeBienvenida{
+  width: 500px;
+  p, ul {
+    text-align: justify;
+  }
+  h5{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
+
+#acuerdos{
+  p{
+    text-align: justify;
+  }
+  .cajaFirmado{
+    display: none;
+    border-bottom: 1px solid #a29f9f;
+    margin-bottom: 20px;
+    color: $primaryColor;
+    i{
+      color: $secondaryColor;
+      font-size: 25px;
+    }
+    span{
+      font-size: 18px;
+    }
+  }
+}
+.firmar{
+  border:1px solid $primaryColor;
+  legend{
+    margin-left: 20px;
+    padding: 0px 10px;
+    color: $primaryColor;
+    font-weight: bold;
+  }
+  input[type='radio']{
+    margin-left: 40px;
+  }
+  span{
+    display: block;
+    font-size: 11px;
+    font-style: italic;
+    margin: 0px 40px 10px;
+  }
+
+}
+
+
+//Conferencia asignada
+.datos_conferencia{
+  span{
+    font-weight: bold;
+  }
+  img{
+    height: 200px;
+  }
+}

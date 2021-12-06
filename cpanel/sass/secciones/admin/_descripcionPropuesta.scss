@@ -1,0 +1,26 @@
+// ===============  Descripción Propuestas  =========
+.contentPropuesta{
+  margin: 30px 0 20px 0;
+  text-align: justify;
+  h5{
+    text-transform: uppercase;
+    color: $primaryColor;
+    text-align: center;
+    font-size: 17px;
+    border-bottom: 2px solid $primaryColor;
+  }
+  .infoPropuesta span{
+    font-weight: bold;
+  }
+}
+.datosConferencista{
+  font-size: 13px;
+}
+.datosConferencista span{
+  font-weight: bold;
+}
+.datosConferencista img{
+  height: 140px;
+  border-radius: 50%;
+  box-shadow: 2px 5px 10px gray;
+}

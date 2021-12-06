@@ -1,0 +1,129 @@
+<?php session_start();
+include('../class/funciones.php');
+ ?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Programa</title>
+    <?php require ("inc/head.php") ?>
+  </head>
+  <body>
+    <main class="row expanded">
+      <div class=" medium-2">
+        <?php include("inc/menuEvento.php") ?>
+      </div>
+      <section class="column medium-10">
+      <header>
+        <div class="">
+          <h4></h4>
+        </div>
+        <div class="menuTop">
+          <a href="index.php"><i class="fi-home"></i></a>
+          <a href="closet.php"><i class="fi-power"></i></a>
+        </div>
+      </header>
+      <h1 class="tituloSeccion">Programa</h1>
+      <div class="column medium-12">
+        <div class="row">
+          <div class="column medium-12">
+            <button type="button" name="button" id="agregar" class="button">
+              <i class="fi-plus"></i> Agregar Bloque
+            </button>
+          </div>
+        </div>
+        <div class="registro">
+          <form class="" action="altaBloque.php" method="post" enctype="multipart/form-data" >
+            <fieldset>
+              <div class="row">
+                <div class="column">
+                  <legend><h5>Información del Bloque</h5></legend>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="column medium-6">
+                  <label for="">Título del bloque:</label>
+                  <input type="text" name="bloque" value="" placeholder="Nombre de la Conferencia" required>
+                </div>
+                <div class="column medium-6">
+                  <label for="">Título del bloque: (Inglés):</label>
+                  <input type="text" name="bloque_ing" value="" placeholder="Nombre de la Conferencia" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column medium-3">
+                  <label for="">Fecha:</label>
+                  <input type="date" name="fecha" value="" placeholder="Día/Mes/Año">
+                </div>
+                <div class="column medium-2">
+                  <label for="">Hora Inicio:</label>
+                  <input type="time" name="inicio" value="" placeholder="00:00:00">
+                </div>
+                <div class="column medium-2">
+                  <label for="">Hora Fin:</label>
+                  <input type="time" name="fin" value="" placeholder="00:00:00">
+                </div>
+                <div class="column medium-3">
+                  <label for="">Tipo:</label>
+                  <select name="tipoBloque">
+                    <option value="Conferencias">Conferencia</option>
+                    <option value="Talleres">Talleres</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="column medium-8">
+                  <label for="">Icono:</label>
+                  <input type="file" name="icono">
+                </div>
+              </div>
+              <div class="row align-center">
+                <input type="hidden" name="evento" value="<?php echo $_SESSION["evento"]; ?>">
+                <button type="submit" name="createCustomer"  class="button">
+                  <i class="fi-save"></i> Guardar
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <?php
+        $programa = new Programa();
+        $programa = $programa->programa($_SESSION["evento"]);
+        $programa = json_decode($programa);
+        var_dump($programa);
+      ?>
+      <section class="programa">
+        <article class="programa_bloque">
+          <section class="header_bloque">
+            <div class="hora_bloque">
+              <i class="fi-clock"></i> 
+              <?php echo $programa->inicio; ?> 
+            </div>
+            <div class="titulo_bloque">
+              <span><?php echo $programa->titulo; ?></span>
+            </div>
+          </section>
+          <!-- <section class="contenido_bloque">
+          </section> -->
+        </article>
+      </section>
+    </main>
+
+    <footer></footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" type="text/javascript"></script>
+    <script src="../js/vendor/what-input.js" type="text/javascript"></script>
+    <script src="../js/vendor/foundation.min.js" type="text/javascript"></script>
+    <script>
+    $(document).foundation();
+
+    $(document).ready(function(){
+    $("#agregar").click(function(){
+      $(".registro").fadeToggle();
+    });
+    });
+    </script>
+
+  </body>
+</html>

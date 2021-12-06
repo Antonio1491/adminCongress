@@ -1,0 +1,71 @@
+.contenedorEventos
+{
+  background-color: $colorComplementario2;
+}
+.eventos, .boletos
+{
+  // grid 
+  margin: 30px ;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  
+  article{
+    position: relative;
+    box-shadow: 5px 5px 20px #dddddd;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: $blanco;
+
+    img{
+      padding:20px 0px;
+      height: 150px;
+      margin: 0 auto;
+    }
+
+    h2{
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    ul{
+      margin-bottom: 0;
+      margin-left: 0;
+      li{
+        font-size: 11px;
+        list-style: none;
+      }
+    }
+
+    .menuEvento{
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      z-index: 3;
+
+      .menuEvento_icon{
+        font-size: 1rem;
+      }
+
+      ul{
+        padding: 5px 10px; 
+        background-color: $colorComplementario2;
+        display: none;
+        list-style: none;
+        position: absolute;
+        box-shadow: 2px 2px 7px #cfc2c2;
+      }
+
+      li{
+        font-size: 0.8rem;
+      }
+
+    }
+
+    .menuEvento:hover ul
+    {
+      display: block;
+    }
+    
+  }
+}

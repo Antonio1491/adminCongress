@@ -1,0 +1,26 @@
+.boleto{
+  .boleto-encabezado, .boleto-precios ul{
+    display: flex;
+  }
+  .boleto-encabezado{
+    align-items: center;
+    i{
+      font-size: 2rem;
+      margin-right: 5px;
+      color: $primaryColor;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
+    h3{
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+  }
+  .boleto-precios ul{
+    justify-content: space-between;
+  }
+  .boleto-disponibilidad{
+    font-size: 0.7rem;
+  }
+
+
+}

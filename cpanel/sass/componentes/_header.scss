@@ -1,0 +1,17 @@
+header{
+  border-bottom: 1px solid #dad9d9;
+  margin:10px 0px;
+  padding-bottom: 5px;
+
+  // grid 
+  display: grid;
+  grid-template-columns: 90% 10%;
+  .menuTop{
+    display: flex;
+    justify-content: space-evenly;
+    a{
+      color: $gris;
+      font-size: 22px;
+    }
+  }
+}

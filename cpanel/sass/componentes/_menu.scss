@@ -1,0 +1,36 @@
+
+.logotipoMenu img{
+  height: 13vh;
+  margin: 30px 0 30px 0;
+}
+.menuPrincipal{
+  background: $primaryColor;
+  height: 100%;
+  min-height: 100vh;
+  li{
+    padding-left: 10px;
+    &:hover{
+      // border-left: 2px solid $secondaryColor;
+      background-color: $blanco;
+      border-bottom-left-radius: 20px;
+      border-top-left-radius: 20px;
+      margin-left: 10px;
+      a{
+        color: $gris;
+      }
+      i{
+        color: $primaryColor;
+      }
+    
+    }
+  }
+  a{
+    color: $blanco;
+    i{
+      color: $colorComplementario;
+      font-size: 1.2rem;
+      margin-right: 10px;
+    }
+  }
+}
+

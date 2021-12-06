@@ -1,0 +1,136 @@
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main{
+  flex:1;
+}
+nav{
+  /* background-color: #ececec; */
+  border-right: 2px solid rgb(200, 15, 171);
+  padding: 2em 0 0 1em;
+  height: 100%;
+}
+header{
+  background: url("../../img/header.png") ;
+  height: 180px;
+  border-bottom: 2px solid rgb(200, 15, 171);
+  box-shadow: 3px 4px 5px #ccc;
+}
+
+.invitacionVip img{
+  height: 600px;
+}
+.contenedor{
+  text-align: center;
+  margin: 40px;
+}
+h1, h2, h3, h4, h5, h6{
+  color: #2CA4A4;
+}
+form.formulario label{
+  color: #2ca4a4;
+  font-weight: bold;
+}
+form.formulario input,
+form.formulario textarea{
+  color: #5b5b5b;
+}
+
+#bienvenida{
+  margin-top: 5em;
+  color: #555555;
+}
+.subrayado{
+  border-bottom: 1px solid #2ca4a4;
+}
+.contenido-perfil .foto{
+  height: 100px;
+  float: left;
+  margin-right: 30px;
+  margin-top: 30px;
+}
+.contenido-perfil{
+  text-align: justify;
+  color: #5b5b5b;
+}
+#informacion-perfil{
+  margin-top: 3em;
+}
+#editar-perfil{
+  display: none;
+}
+#editar-perfil h4, #informacion-perfil strong, #editar-perfil label {
+  color: #2ca4a4;
+}
+#editar-perfil label{
+  font-weight: bold;
+}
+.documentos{
+  margin-top: 60px;
+
+  /* margin-top: 40px; */
+}
+.confirmarFiesta form input[type=radio]:nth-of-type(2){
+  margin-left: 40px;
+}
+/*========================  Formulario de portafolio  ===============*/
+#form-portafolio button{
+  margin: 0 20%;
+  margin-left: 20%;
+}
+#traducir{
+  margin: 0 auto;
+}
+
+#acuerdos{
+  margin-top: 2em;
+  color: #6b6b6c;
+}
+.firmar, .confirmarFiesta {
+  font-size: 14.5px;
+  font-weight: bold;
+  color: #326a75;
+}
+/* #acuerdos h4{
+  color:  rgb(63, 85, 85);
+}
+#acuerdos h5{
+  color: rgb(83, 83, 83);
+} */
+.datos_conferencia {
+  margin: 3em 0 0 4em;
+}
+.datos_conferencia span{
+  color: #029892;
+  font-weight: bold;
+}
+
+.carga-doc h4{
+  margin-top: 3em;
+  text-align: center;
+  color: #2CA4A4;
+
+}
+.check_doc{
+  height: 200px;
+  margin: 0 auto;
+}
+footer{
+  padding: 1.5em 0 1.5em 0;
+  font-size: 13px;
+  color: #fff;
+  background-color: rgb(0, 123, 120);
+}
+/* footer #copy{
+  font-size: 11px;
+} */
+footer img{
+  height: 70px;
+}
+footer .copy{
+  font-size: 11px;
+  padding-top: 1em;
+  border-top: 1px solid #fff;
+}

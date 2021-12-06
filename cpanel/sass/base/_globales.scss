@@ -1,0 +1,13 @@
+.tituloSeccion{
+  color: $gris;
+  font-size: 25px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+}
+body{
+  font-family: 'Inter', sans-serif;
+}
+
+.boleto, .evento{
+  background-color: rgba($colorComplementario2, 0.2);
+}

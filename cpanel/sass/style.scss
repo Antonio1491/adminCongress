@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import "base/variables";
+@import "base/globales";
+@import "base/mixins";
+
+@import "componentes/menu";
+@import "componentes/header";
+@import "componentes/eventos";
+@import "componentes/boletos";
+@import "componentes/tablaResultados";
+@import "componentes/bloquePrograma";
+
+// @import "../../sass/lib/variables";
+@import "secciones/login";
+@import "base/inicio";
+@import "secciones/admin/descripcionPropuesta";
+@import "secciones/admin/conferencistas";
+@import "secciones/conferencistas/general";
