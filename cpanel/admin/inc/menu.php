@@ -1,7 +1,7 @@
 <nav class="menuPrincipal">
   <div class="text-center">
     <figure class="logotipoMenu">
-      <img src="img/logo_leon.png" alt="">
+      <img src="img/logo_cpanel.png" alt="">
     </figure>
   </div>
   <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true" >

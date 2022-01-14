@@ -14,15 +14,7 @@ include('../class/funciones.php');
       <?php include("inc/menuEvento.php") ?>
     </div>
     <section class="column medium-10">
-    <header>
-        <div class="">
-          <h4></h4>
-        </div>
-        <div class="menuTop">
-          <a href="index.php"><i class="fi-home"></i></a>
-          <a href="closet.php"><i class="fi-power"></i></a>
-        </div>
-      </header>
+    <?php include('inc/header.php'); ?>
       <h1 class="tituloSeccion">Talleres</h1>
       <div class="column medium-12">
         <div class="row">
@@ -218,5 +210,6 @@ include('../class/funciones.php');
     );
 } );
   </script>
+  <?php require('inc/footer.php') ?>
   </body>
 </html>

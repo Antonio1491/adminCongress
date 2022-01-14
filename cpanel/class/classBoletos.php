@@ -81,10 +81,10 @@ class Boletos extends Conexion{
 
   }
 
-  public function eliminarBoleto($id) 
+  public function eliminar($id) 
   {
     $sql = $this->conexion_db->query("DELETE FROM boletos
-    WHERE id_boleto = $id ");
+    WHERE id_boleto = '$id' ");
 
     return $sql; 
   }

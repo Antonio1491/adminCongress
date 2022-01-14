@@ -22,35 +22,18 @@ $resultado = $eliminar->eliminarPatrocinador($id);
 
 if ($resultado) {
 
-    echo  '<script>
-    Swal.fire({ title: "Registro eliminado con éxito ",
-        icon: "success",customClass: "swal-wide",}).then(okay => {
-          if (okay) {
-            window.location.href = "patrocinadores.php";
-
-        }
-      });
-  
-      </script>';
-
+  echo "<script>window.history.go(-1);</script>";
 }
-
 else{
-
-    echo  '<script>
-    Swal.fire({ title: "Error al guardar en la base de datos ",
-        icon: "warning",customClass: "swal-wide",}).then(okay => {
-          if (okay) {
-            window.location.href = "patrocinadores.php";
-
-        }
-      });
-  
-      </script>';
-    //   echo "<script>window.history.go(-1);</script>";
+  echo  '<script>
+  Swal.fire({ title: "Error al eliminar el registro ",
+      icon: "warning",customClass: "swal-wide",}).then(okay => {
+        if (okay) {
+          window.history.go(-1);
+      }
+    });
+    </script>';
 
 }
-
- ?>
  </body>
  </html>

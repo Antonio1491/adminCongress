@@ -15,47 +15,53 @@ class Login extends Conexion{
 
         // echo "tenemos datos" . $us . " - ". $pas;
 
+          //funciona
+        // $sql = $this->conexion_db->query("SELECT * FROM credenciales
+        //                             WHERE usuario = '$us'
+        //                             AND password = '$pas' ");
+
         $sql = $this->conexion_db->query("SELECT * FROM credenciales
-                                    WHERE usuario = '$us'
-                                    AND password = '$pas' ");
+                                    WHERE usuario = '$us'");
+
+        // password_verify($pas, )
 
         $respuesta = $sql->fetch_all(MYSQLI_ASSOC);
 
-        
+        if ($respuesta) 
+        {
+          foreach ($respuesta as $valor)
+          {
+            $id_usuario = $valor['id_credencial'];
+            $nivel = $valor['tipo'];
+            //el nivel es el tipo de usuario: admin, conferencista, comité , etc.
 
-        if ($respuesta) {
-              foreach ($respuesta as $valor){
-                $id_usuario = $valor['id_credenciales'];
-                $nivel = $valor['tipo'];
-                //el nivel es el tipo de usuario: admin, conferencista, comité , etc.
-                if (session_status() == PHP_SESSION_NONE) {
-                  session_start();
+            if (session_status() == PHP_SESSION_NONE) 
+            {
+              session_start();
+            }
+
+            $usuario = $valor['usuario'];
+            $_SESSION['idCredencial'] = $valor['id_credencial'];
+            $_SESSION['nombre'] = $valor['nombre'];
+            $_SESSION['apellido'] = $valor['apellido'];
+            $_SESSION['fotografia'] = $valor['fotografia'];
+            $_SESSION['tipoUsuario'] = $valor['tipo'];
+            $_SESSION['usuario'] = $usuario; // $username coming from the form, such as $_POST['username']
+          }
+              if ($nivel == 1) 
+              {
+                echo  json_encode('admin');                                
               }
-                $usuario = $valor['usuario'];
-                $_SESSION['usuario'] = $usuario; // $username coming from the form, such as $_POST['username']
-
+              else if($nivel == 3)
+              {
+                echo json_encode ($respuesta);                      
               }
-                  if ($nivel == 1) {
-               
-
-                    echo  json_encode('admin');                                
-                     
-                    }
-                    else if($nivel == 3){
-                 
-
-                    echo json_encode ($respuesta);                      
-                               
-
-                    }
-                    else {
-               
-                      echo json_encode ($respuesta);                      
-
-                    }
+              else 
+              {               
+                echo json_encode ($respuesta);                      
+                }
         }
         else {
-  
 
         echo  json_encode('error');                                
       }

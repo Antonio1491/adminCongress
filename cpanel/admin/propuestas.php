@@ -16,15 +16,7 @@ $propuestas = new Propuesta();
       <?php include("inc/menuEvento.php") ?>
     </div>
     <section class="column medium-10">
-      <header>
-        <div class="">
-          <h4></h4>
-        </div>
-        <div class="menuTop">
-          <a href="index.php"><i class="fi-home"></i></a>
-          <a href="closet.php"><i class="fi-power"></i></a>
-        </div>
-      </header>
+      <?php include('inc/header.php'); ?>
       <h1 class="tituloSeccion">Propuestas</h1>
       <section class="column medium-12">
         <?php
@@ -73,7 +65,7 @@ $propuestas = new Propuesta();
                   
                   echo "<td class='acciones'>
                         <!--<a href='".$valor['link']."' target='_blank' class='link_encuesta'><i class='fi-pencil'></i> Calificar </a>-->
-                        <a href='eliminarPropuesta.php?id=".$valor['id_conferencia']."' title='Eliminar' class='eliminar'><i class='fi-x'></i> Eliminar</a> 
+                        <a href='eliminarPropuesta.php?id=".$valor['id_conferencia']."' title='Eliminar' class='eliminar'><i class='fi-x'></i></a> 
                         <!--<a href='editarEnlace.php?id=".$valor['id_conferencia']."' title='Editar Enlace' class='editarEnlace'><i class='fi-link'></i> </a></td>-->
                         </tr>"
                         ;
@@ -111,7 +103,7 @@ $propuestas = new Propuesta();
     );
 } );
   </script>
-  
+<?php require('inc/footer.php') ?>
 
   </body>
 </html>

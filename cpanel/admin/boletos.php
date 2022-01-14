@@ -15,15 +15,7 @@ include('../class/funciones.php');
         <?php include("inc/menuEvento.php") ?>
       </div>
       <section class="column medium-10">
-        <header>
-          <div class="">
-            <h4></h4>
-          </div>
-          <div class="menuTop">
-            <a href="index.php"><i class="fi-home"></i></a>
-            <a href="closet.php"><i class="fi-power"></i></a>
-          </div>
-        </header>
+        <?php include('inc/header.php'); ?>
         <h1 class="tituloSeccion">Boletos</h1>
         <div class="row">
           <button type="button" name="button" id="agregar" class="button">
@@ -117,7 +109,7 @@ include('../class/funciones.php');
               </a>
               <ul>
                 <li><a href='editarBoleto.php?id=".$valor['id_boleto']."'>Editar</a></li>
-                <li><a href='eliminarBoleto.php?id=".$valor['id_boleto']."' class='eliminarBoleto'>Borrar</a></li>
+                <li><a href='eliminarBoleto.php?id=".$valor['id_boleto']."' class='eliminar'>Borrar</a></li>
               </ul>
             </div>
             <div class='boleto-encabezado'>
@@ -158,30 +150,6 @@ include('../class/funciones.php');
     });
     });
     </script> 
-<script>
-$('.eliminarBoleto').click(function(e) {
-e.preventDefault(); // Prevent the href from redirecting directly
-var linkURL = $(this).attr("href");
-warnBeforeRedirect(linkURL);
-});
-
- function warnBeforeRedirect(linkURL) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-    text: "No se puede deshacer este cambio",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Si, adelante',
-    cancelButtonText:'No, cancelar'
-    }).then((result) => {
-  if (result.value) {
-    window.location.href = linkURL;
-  }
-  return false;
-})
-  }
-</script>
+<?php require('inc/footer.php') ?>
   </body>
 </html>

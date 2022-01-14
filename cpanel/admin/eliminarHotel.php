@@ -11,32 +11,17 @@ $resultado = $eliminar->eliminarHotel($id);
 
 if ($resultado) {
 
-    echo  '<script>
-    Swal.fire({ title: "Registro eliminado con exito ",
-        icon: "success",customClass: "swal-wide",}).then(okay => {
-          if (okay) {
-            window.location.href = "hoteles.php";
-
-        }
-      });
-  
-      </script>';
-
+  echo "<script>window.history.go(-1);</script>";
 }
-
 else{
-
-    echo  '<script>
-    Swal.fire({ title: "Error al eliminar el registro ",
-        icon: "warning",customClass: "swal-wide",}).then(okay => {
-          if (okay) {
-            window.location.href = "hoteles.php";
-
-        }
-      });
-  
-      </script>';
-    //   echo "<script>window.history.go(-1);</script>";
+  echo  '<script>
+  Swal.fire({ title: "Error al eliminar el registro ",
+      icon: "warning",customClass: "swal-wide",}).then(okay => {
+        if (okay) {
+          window.history.go(-1);
+      }
+    });
+    </script>';
 
 }
 

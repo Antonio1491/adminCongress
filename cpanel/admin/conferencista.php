@@ -19,15 +19,7 @@ $array_conferencias = $conferencias->listaConferencias($_SESSION["evento"]);
       <?php include("inc/menuEvento.php") ?>
     </div>
     <section class="column medium-10">
-    <header>
-        <div class="">
-          <h4></h4>
-        </div>
-        <div class="menuTop">
-          <a href="index.php"><i class="fi-home"></i></a>
-          <a href="closet.php"><i class="fi-power"></i></a>
-        </div>
-      </header>
+    <?php include('inc/header.php'); ?>
       <h1 class="tituloSeccion">Conferencistas</h1>
       <section class="column medium-12">
         <!-- <div class="column medium-10 formularioRegistro"> -->
@@ -247,5 +239,6 @@ $array_conferencias = $conferencias->listaConferencias($_SESSION["evento"]);
     );
 } );
   </script>
+  <?php require('inc/footer.php') ?>
   </body>
 </html>

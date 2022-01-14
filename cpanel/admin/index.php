@@ -5,7 +5,7 @@ $login = new Login();
 $verificaLogin = $login->verificaLogin();
 // $_SESSION['id_usuario'] = $_GET['id'];
 $congresos = new Congreso();
-$array_congresos = $congresos->listaCongresos();
+$array_congresos = $congresos->listaCongresos($_SESSION["idCredencial"], $_SESSION["tipoUsuario"]);
 
 ?>
 <!DOCTYPE html>
@@ -23,15 +23,7 @@ $array_congresos = $congresos->listaCongresos();
       <?php include("inc/menu.php") ?>
     </div>
     <section class="column medium-10">
-      <header>
-        <div class="">
-          <h4></h4>
-        </div>
-        <div class="menuTop">
-          <a href="index.php"><i class="fi-home"></i></a>
-          <a href="closet.php"><i class="fi-power"></i></a>
-        </div>
-      </header>
+      <?php include('inc/header.php'); ?>
       <h1 class="tituloSeccion">Resumen de congresos</h1>
       <div class="row">
         <button type="button" name="button" id="agregar" class="button">
@@ -189,10 +181,13 @@ $array_congresos = $congresos->listaCongresos();
       ?>
     </section>
   </main>
-  <footer></footer>
+  
   <script src="https://code.jquery.com/jquery-3.2.1.js" type="text/javascript"></script>
   <script src="../js/vendor/what-input.js" type="text/javascript"></script>
   <script src="../js/vendor/foundation.min.js" type="text/javascript"></script>
+  <footer>
+    <?php include 'inc/footer.php'; ?>
+  </footer>
   <script>
     $(document).foundation();
   </script>
@@ -205,7 +200,6 @@ $array_congresos = $congresos->listaCongresos();
         $(".registro").fadeToggle();
       });
     });
-
 
   </script>
 

@@ -1,9 +1,10 @@
 <?php session_start();
 include('../class/funciones.php');
-
+// var_dump($_SESSION);
 $usuario = new Usuario();
+$dataUsuarios = json_decode($usuario->all($_SESSION["idCredencial"]));
+$congresos = json_decode($usuario->congresosByUsuario($_SESSION["idCredencial"])) ;
 
-$dataUsuarios = json_decode($usuario->all($_SESSION["evento"]));
 
 $categorias = json_decode($usuario -> tipoUsuario());
 
@@ -18,18 +19,10 @@ $categorias = json_decode($usuario -> tipoUsuario());
   <body>
     <main class="row expanded">
     <div class=" medium-2">
-      <?php include("inc/menuEvento.php") ?>
+      <?php include("inc/menu.php") ?>
     </div>
     <section class="column medium-10">
-    <header>
-        <div class="">
-          <h4></h4>
-        </div>
-        <div class="menuTop">
-          <a href="index.php"><i class="fi-home"></i></a>
-          <a href="closet.php"><i class="fi-power"></i></a>
-        </div>
-      </header>
+    <?php include('inc/header.php'); ?>
       <h1 class="tituloSeccion">Usuarios</h1>
       <section class="column medium-12">
      
@@ -44,7 +37,7 @@ $categorias = json_decode($usuario -> tipoUsuario());
             </div>
           </div>
           <div class="registro">
-            <form class="" action="altaTaUsuario.php" method="post" enctype="multipart/form-data">
+            <form class="" action="altaUsuario.php" method="post" enctype="multipart/form-data">
               <fieldset>
                 <div class="row">
                   <div class="column">
@@ -64,16 +57,16 @@ $categorias = json_decode($usuario -> tipoUsuario());
                   <div class="row ">
                     <div class="column medium-4">
                       <label for="">Usuario:</label>
-                      <input type="text" name="cargo" value="" placeholder="Cargo" required>
+                      <input type="text" name="usuario" value="" placeholder="Cargo" required>
                     </div>
                     <div class="column medium-4">
                       <label for="">Password:</label>
-                      <input type="text" name="empresa" value="" placeholder="Empresa" required>
+                      <input type="text" name="password" value="" placeholder="Empresa" required>
                     </div>
                   </div>
                   <div class="row ">
                     <div class="column medium-4">
-                      <label for="">fotografía:</label>
+                      <label for="">Fotografía:</label>
                       <input type="file" name="fotografia" value="" >
                     </div>
                     <div class="column medium-4">
@@ -86,11 +79,22 @@ $categorias = json_decode($usuario -> tipoUsuario());
                       </select>
                     </div>
                   </div>
+                  <div class="row">
+                    <legend><strong>Congresos:</strong></legend>
+                  </div>
+                  <div class="row">
+                    <?php foreach($congresos as $congreso) : ?>
+                    <input type="checkbox" value="<?php echo $congreso->id_congreso; ?>" name="congreso[]"><br>
+                    <label for="congresos"><?php echo $congreso->nombre_evento; ?></label>
+                    <?php endforeach; ?>
+                  </div>
 
-                  <div class="row ">
-                    <div class="column">
+                  <div class="row align-center">
+                    <div class="column-12">
                       <input type="hidden" name="evento" value="<?php echo $_SESSION["evento"]; ?>">
-                      <input type="submit" name="" value="Registrar" class="success button">
+                      <button type="submit" name=""  class="button">
+                        <i class="fi-save"></i> Guardar
+                      </button>
                     </div>
                   </div>
               </fieldset>
@@ -103,25 +107,19 @@ $categorias = json_decode($usuario -> tipoUsuario());
             echo "<table class='tablaResultados' id='tablaTalleristas'>
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Foto</th>
                         <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Categoría</th>
+                        <th>Usuario</th>
                         <th>Acciones</th>                      
                       </tr>
                     </thead>
                     <tbody>";
-                    $num = 0;
                     // var_dump($usuarios);
                       foreach ($dataUsuarios as $usuario) {
-                        $num++;
-                        echo "<tr>";
-                        echo "<td>".$num ."</td>";
-                        echo"<td><img src='../../img/uploads/leon/talleristas/".$usuario ->fotografia."'></td>";
-                        echo "<td>" . $usuario->nombre . "</td>";
-                        echo "<td>" . $usuario->apellido . "</td>";
-                        echo "<td>" . $usuario->tipo . "</td>";
+                        echo "<tr class='usuario'>";
+                        echo"<td>
+                            <img src='../img/".$usuario ->fotografia."'>"
+                            .$usuario->nombre . " " . $usuario->apellido . "</td>";
+                        echo "<td class='tipoUsuario'>" . $usuario->tipo . "</td>";
                         echo "<td class='acciones'><a href='editarTallerista.php?id=".$elemento['id_tallerista']."' title='Editar'><i class='fi-pencil'></i></a> | ";
                         echo "<a href='eliminarTallerista.php?id=".$elemento['id_tallerista']."' title='Eliminar' class='eliminar'> <i class='fi-x'></i> </a></td>";
                         echo "</tr>";

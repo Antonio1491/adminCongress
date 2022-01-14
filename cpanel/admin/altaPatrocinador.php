@@ -12,7 +12,7 @@
 <?php session_start();
 include('../class/funciones.php');
 
-if (isset($_POST["submit"])){
+if (isset($_POST["patrocinador"])){
 
   $patrocinador = filtrado($_POST['patrocinador']);
   $web= filtrado($_POST['web']);
@@ -33,7 +33,7 @@ if (isset($_POST["submit"])){
       Swal.fire({
         icon: "success",
         title: "Datos Guardados",
-        text: "Se agregaron con éxito los datos"
+        text: ""
       }).then((result) => {
         if (result.isConfirmed) {
           window.history.go(-1);

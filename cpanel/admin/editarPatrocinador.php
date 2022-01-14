@@ -17,15 +17,7 @@ $array_datos= $patrocinador->getPatrocinador($id);
       <?php include("inc/menuEvento.php") ?>
     </div>
     <section class="column medium-10">
-    <header>
-        <div class="">
-          <h4></h4>
-        </div>
-        <div class="menuTop">
-          <a href="index.php"><i class="fi-home"></i></a>
-          <a href="closet.php"><i class="fi-power"></i></a>
-        </div>
-      </header>
+    <?php include('inc/header.php'); ?>
       <h1 class="tituloSeccion">Editar Patrocinador</h1>
       <div class="column medium-12 contenido">
         <div class="">

@@ -9,12 +9,27 @@ class Congreso extends Conexion
 
     }
 
-    public function listaCongresos()
+    public function listaCongresos($idCredencial, $tipoUsuario)
     {
-      $sql = "SELECT * FROM congresos";
+      /* Consultamos los congresos asignados al usuario para mostrarselos en el dashboard*/
+      if($tipoUsuario != "0")
+      {
+        $sql = "SELECT * FROM credencial_congreso 
+        JOIN congresos 
+        ON congresos.id_congreso = credencial_congreso.id_congreso
+        WHERE credencial_congreso.id_credencial = '$idCredencial' ";
+      }
+      else
+      {
+        $sql = "SELECT * FROM congresos";
+      }
+      
       $consulta = $this->conexion_db->query($sql);
+
       $datos = $consulta->fetch_all(MYSQLI_ASSOC);
+
       return $datos;
+
     }
 
     public function datosCongreso($evento)
@@ -26,6 +41,17 @@ class Congreso extends Conexion
       $datos = $consulta->fetch_all(MYSQLI_ASSOC);
 
       return $datos;
+    }
+
+    public function getFecha($congreso)
+    {
+      $sql = "SELECT fecha_inicio, fecha_fin, hora_inicio, hora_fin FROM congresos WHERE id_congreso = '$congreso' ";
+
+      $consulta = $this->conexion_db->query($sql);
+
+      $datos = $consulta->fetch_all(MYSQLI_ASSOC);
+
+      return json_encode($datos[0]);
     }
 
     public function logoById($idCongreso)
@@ -173,7 +199,7 @@ class Congreso extends Conexion
     if($this -> validarImg($img["type"], $img["size"]))
     {
       //directorio servidor
-      $dir = $_SERVER['DOCUMENT_ROOT'].'/'.$codigo.'/img/';
+      // $dir = $_SERVER['DOCUMENT_ROOT'].'/'.$codigo.'/img/';
       //directorio local
       $dir = $_SERVER['DOCUMENT_ROOT'].'/congresos/'.$codigo.'/img/';
 

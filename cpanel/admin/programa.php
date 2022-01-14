@@ -1,5 +1,9 @@
-<?php session_start();
+<?php 
+session_start();
 include('../class/funciones.php');
+// var_dump($_SESSION);
+$congreso = new Congreso();
+$fecha = json_decode($congreso->getFecha($_SESSION["evento"])); 
  ?>
 <!DOCTYPE html>
 <html>
@@ -14,15 +18,7 @@ include('../class/funciones.php');
         <?php include("inc/menuEvento.php") ?>
       </div>
       <section class="column medium-10">
-      <header>
-        <div class="">
-          <h4></h4>
-        </div>
-        <div class="menuTop">
-          <a href="index.php"><i class="fi-home"></i></a>
-          <a href="closet.php"><i class="fi-power"></i></a>
-        </div>
-      </header>
+      <?php include('inc/header.php'); ?>
       <h1 class="tituloSeccion">Programa</h1>
       <div class="column medium-12">
         <div class="row">
@@ -53,7 +49,7 @@ include('../class/funciones.php');
               <div class="row">
                 <div class="column medium-3">
                   <label for="">Fecha:</label>
-                  <input type="date" name="fecha" value="" placeholder="Día/Mes/Año">
+                  <input type="date" name="fecha" placeholder="Día/Mes/Año" min="<?php echo $fecha->fecha_inicio; ?>" max="<?php echo $fecha->fecha_fin; ?>" step="1">
                 </div>
                 <div class="column medium-2">
                   <label for="">Hora Inicio:</label>
@@ -67,7 +63,7 @@ include('../class/funciones.php');
                   <label for="">Tipo:</label>
                   <select name="tipoBloque">
                     <option value="Conferencias">Conferencia</option>
-                    <option value="Talleres">Talleres</option>
+                    <option value="Talleres">Taller</option>
                     <option value="Otro">Otro</option>
                   </select>
                 </div>
@@ -89,25 +85,39 @@ include('../class/funciones.php');
         </div>
       </div>
       <?php
-        $programa = new Programa();
-        $programa = $programa->programa($_SESSION["evento"]);
+        $programaContenido = new Programa();
+        $programa = $programaContenido->programa($_SESSION["evento"]);
         $programa = json_decode($programa);
-        var_dump($programa);
+        
       ?>
       <section class="programa">
+        <?php foreach ($programa as $bloque) : ?>
         <article class="programa_bloque">
+          <div class="menuEvento">
+            <a href="#" class="menuEvento_icon">
+              <i class="fi-list"></i>
+            </a>
+            <ul>
+              <li><a href="eliminarBloque.php?id=<?php echo $bloque->id ?>" class="eliminar">Borrar</a></li>
+            </ul>
+          </div>
           <section class="header_bloque">
             <div class="hora_bloque">
               <i class="fi-clock"></i> 
-              <?php echo $programa->inicio; ?> 
+              <?php echo $bloque->inicio. " - "  .$bloque->fin; ?> 
             </div>
             <div class="titulo_bloque">
-              <span><?php echo $programa->titulo; ?></span>
+              <span><?php echo $bloque->titulo; ?></span>
             </div>
           </section>
-          <!-- <section class="contenido_bloque">
-          </section> -->
+          <section class="contenido_bloque">
+            <?php $contenido = $programaContenido->bloque($bloque->tipo, $bloque->fecha, $bloque->inicio, $bloque->fin, $bloque->id_congreso) ?>
+              <ul class="lista_bloque">
+                <?php echo $contenido; ?>
+              </ul>
+          </section>
         </article>
+        <?php endforeach ?>
       </section>
     </main>
 
@@ -124,6 +134,7 @@ include('../class/funciones.php');
     });
     });
     </script>
+    <?php require('inc/footer.php') ?>
 
   </body>
 </html>

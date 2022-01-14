@@ -5,15 +5,18 @@ $id = $_GET['id'];
 $eliminar = new Evento();
 $resultado = $eliminar->eliminar($id);
 if ($resultado) {
-      $mensaje = header("Location:". getenv('HTTP_REFERER'));
-      echo $mensaje;
-
+      echo "<script>window.history.go(-1);</script>";
 }
 else{
-      echo"<script language='JavaScript'>
-      alert('No pudimos eliminar el registro');
-      </script>";
-      echo "<script>window.history.go(-1);</script>";
+  echo  '<script>
+  Swal.fire({ title: "Error al eliminar el registro ",
+      icon: "warning",customClass: "swal-wide",}).then(okay => {
+        if (okay) {
+          window.history.go(-1);
+      }
+    });
+    </script>';
+
 }
 
  ?>

@@ -20,15 +20,7 @@ $array_talleristas = $taller->talleristas($_SESSION["evento"]);
       <?php include("inc/menuEvento.php") ?>
     </div>
     <section class="column medium-10">
-    <header>
-        <div class="">
-          <h4></h4>
-        </div>
-        <div class="menuTop">
-          <a href="index.php"><i class="fi-home"></i></a>
-          <a href="closet.php"><i class="fi-power"></i></a>
-        </div>
-      </header>
+    <?php include('inc/header.php'); ?>
       <h1 class="tituloSeccion">Talleristas</h1>
       <section class="column medium-12">
      
@@ -214,5 +206,6 @@ $array_talleristas = $taller->talleristas($_SESSION["evento"]);
     );
 } );
   </script>
+  <?php require('inc/footer.php') ?>
   </body>
 </html>

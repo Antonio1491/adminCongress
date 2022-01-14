@@ -20,12 +20,6 @@ class Taller extends Conexion{
       return $talleristas;
     }
 
-    
-
-
-
-
-
   //Taller
     public function registrarTaller($taller, $taller_ing, $taller_port, $subtitulo, 
                     $subtitulo_ing, $subtitulo_port, $fecha,

@@ -24,7 +24,37 @@ $data = [
 
 $programa = new Programa();
 $resultado = $programa->guardarBloque(json_encode($data));
-var_dump($resultado);
-die();
+if ($resultado) {
+  $mensaje = '
+  <script>
+Swal.fire({
+    icon: "success",
+    title: "Agregado con éxito",
+    text: "Datos guardados correctamente"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.history.go(-1);
+    }
+  })
+
+</script>
+  
+  ';
+  echo $mensaje;
+  }
+  else{
+    echo'<script>
+    Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "No pudimos crear el evento"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.history.go(-1);
+            }
+          })
+    
+    </script>';
+  }
  ?>
 </html>

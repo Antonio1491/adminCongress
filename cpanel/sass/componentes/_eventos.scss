@@ -36,36 +36,37 @@
         list-style: none;
       }
     }
-
-    .menuEvento{
-      position: absolute;
-      right: 20px;
-      top: 10px;
-      z-index: 3;
-
-      .menuEvento_icon{
-        font-size: 1rem;
-      }
-
-      ul{
-        padding: 5px 10px; 
-        background-color: $colorComplementario2;
-        display: none;
-        list-style: none;
-        position: absolute;
-        box-shadow: 2px 2px 7px #cfc2c2;
-      }
-
-      li{
-        font-size: 0.8rem;
-      }
-
-    }
-
-    .menuEvento:hover ul
-    {
-      display: block;
-    }
     
   }
+}
+
+.menuEvento{
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 3;
+
+  .menuEvento_icon{
+    font-size: 1rem;
+  }
+
+  ul{
+    margin-left: 0px;
+    padding: 5px 10px; 
+    background-color: $colorComplementario2;
+    display: none;
+    list-style: none;
+    position: absolute;
+    box-shadow: 2px 2px 7px #cfc2c2;
+  }
+
+  li{
+    font-size: 0.8rem;
+  }
+
+}
+
+.menuEvento:hover ul
+{
+  display: block;
 }

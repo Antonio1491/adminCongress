@@ -10,13 +10,11 @@ class Conferencistas extends Conexion{   //utilizar variables y métodos dentro 
   //despliega listas de conferencistas
   public function get_usuarios($evento){
       $resultado = $this->conexion_db->query("SELECT a.id_conferencista, a.nombre, a.apellidos,
-                                              a.cargo, a.empresa, a.pais, a.ciudad, a.foto,
-                                              a.autoriza1, a.autoriza2, a.evento_social,
-                                              a.id_credenciales,c.id_credenciales, c.usuario
-                                              FROM conferencistas as a JOIN credenciales as c
-                                              ON a.id_credenciales = c.id_credenciales
-                                              WHERE a.id_congreso = '$evento'
-                                              ORDER BY id_conferencista DESC");
+      a.cargo, a.empresa, a.pais, a.ciudad, a.foto,
+      a.autoriza1, a.autoriza2, a.evento_social
+      FROM conferencistas AS a
+      WHERE a.id_congreso = 'CPL2020'
+      ORDER BY id_conferencista DESC");
 
       $usuarios = $resultado->fetch_all(MYSQLI_ASSOC);
 
